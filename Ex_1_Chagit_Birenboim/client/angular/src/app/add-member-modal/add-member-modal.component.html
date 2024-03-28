@@ -1,0 +1,160 @@
+<!-- add-member-modal.component.html -->
+<div class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-1 close-modal-header">
+                <button type="button" class="btn btn-outline-dark" (click)="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <h2 class="text-center">הוספת חבר חדש</h2>
+        <span>שדות המסומנים ב<i>*</i> הם שדות חובה</span>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+            <h4>פרטים אישיים:</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="identityNum">מספר זהות</label><i>*</i>
+                    <input type="text" formControlName="identityNum" class="form-control" id="identityNum">
+                    <div class="feedback" *ngIf="submitted && f.identityNum.errors">
+                        <div *ngIf="f.identityNum.errors.required || f.identityNum.errors.pattern ">
+                            אנא הכנס מספר זהות
+                        </div>
+                        <div *ngIf="f.identityNum.errors.invalid">
+                            אנא הכנס מספר זהות תקין
+                        </div>
+                        <div *ngIf="f.identityNum.errors.duplicate">
+                            מספר זהות זה קיים במערכת
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="firstName">שם פרטי</label><i>*</i>
+                    <input type="text" formControlName="firstName" class="form-control" id="firstName">
+                    <div class="feedback" *ngIf="submitted && f.firstName.errors">
+                        <div *ngIf="f.firstName.errors.required">
+                            אנא הכנס שם פרטי
+                        </div>
+                        <div *ngIf="f.firstName.errors.pattern">
+                            אותיות בלבד
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="lastName">שם משפחה</label><i>*</i>
+                    <input type="text" formControlName="lastName" class="form-control" id="lastName">
+                    <div class="feedback" *ngIf="submitted && f.lastName.errors">
+                        <div *ngIf="f.lastName.errors.required">
+                            אנא הכנס שם משפחה
+                        </div>
+                        <div *ngIf="f.lastName.errors.pattern">
+                            אותיות בלבד
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="phone">טלפון</label>
+                    <input type="text" formControlName="phone" class="form-control" id="phone">
+                    <div class="feedback" *ngIf="submitted && f.phone.errors">
+                        <div *ngIf="f.phone.errors.pattern ">
+                            אנא הכנס מספר טלפון תקין
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="mobilePhone">טלפון נייד</label><i>*</i>
+                    <input type="text" formControlName="mobilePhone" class="form-control" id="mobilePhone">
+                    <div class="feedback" *ngIf="submitted && f.mobilePhone.errors">
+                        <div *ngIf="f.mobilePhone.errors.required">
+                            אנא הכנס טלפון נייד
+                        </div>
+                        <div *ngIf="f.mobilePhone.errors.pattern || f.mobilePhone.errors.minlength">
+                            אנא הכנס מספר טפלון נייד תקין
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="city">עיר</label><i>*</i>
+                    <input type="text" formControlName="city" class="form-control" id="city">
+                    <div class="feedback" *ngIf="submitted && f.city.errors">
+                        <div *ngIf="f.city.errors.required">
+                            אנא הכנס עיר
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="street">רחוב</label><i>*</i>
+                    <input type="text" formControlName="street" class="form-control" id="street">
+                    <div class="feedback" *ngIf="submitted && f.street.errors">
+                        <div *ngIf="f.street.errors.required">
+                            אנא הכנס רחוב
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="numHouse">מספר בית</label><i>*</i>
+                    <input type="text" formControlName="numHouse" class="form-control" id="numHouse">
+                    <div class="feedback" *ngIf="submitted && f.numHouse.errors">
+                        <div *ngIf="f.numHouse.errors.required">
+                            אנא הכנס מספר בית
+                        </div>
+                        <div *ngIf="f.numHouse.errors.pattern">
+                            ספרות בלבד
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="birthDate">תאריך לידה</label><i>*</i>
+                    <input type="date" max="{{today | date:'yyyy-MM-dd'}}" formControlName="birthDate"
+                        class="form-control" id="birthDate">
+                    <div class="feedback" *ngIf="submitted && f.birthDate.errors">
+                        <div *ngIf="f.birthDate.errors.required">
+                            אנא הכנס תאריך לידה
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>פרטי מחלת קורונה:</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="startIllDate">תאריך קבלת תוצאה חיובית</label>
+                    <input type="date" [(ngModel)]="IsEnterStartIll" max="{{today | date:'yyyy-MM-dd'}}"
+                        formControlName="startIllDate" class="form-control" id="startIllDate">
+                </div>
+                <div class="col-md-6">
+                    <label for="endIllDate">תאריך החלמה</label>
+                    <input type="date" [disabled]="!IsEnterStartIll" max="{{today | date:'yyyy-MM-dd'}}"
+                        min="userForm.startIllDate" laceholder="תאריך החלמה" formControlName="endIllDate"
+                        class="form-control" id="endIllDate">
+                    <div class="feedback" *ngIf="submitted && f.endIllDate.errors">
+                        <div *ngIf="f.endIllDate.errors.early">
+                            תאריך החלמה חייב להיות מאוחר יותר מתאריך קבלת תוצאה חיובית
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>חיסונים:</h4>
+            <div class="row" formArrayName="vaccineDetails">
+                <div class="col-md-8 row" *ngFor="let vaccine of vaccineArray.controls; let i = index"
+                    [formGroupName]="i">
+                    <div class="col-md-6">
+                        <label for="manufacturer">יצרן החיסון</label>
+                        <input type="text" formControlName="manufacturer" id="manufacturer">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="date">תאריך קבלת החיסון</label>
+                        <input formControlName="date" type="date" id="dateReceived">
+                    </div>
+                </div>
+                <button class="btn btn-outline-dark col-md-4" type="button" (click)="addVaccine()">להוספת חיסון</button>
+            </div>
+            <div class="form-btn">
+                <button class="btn btn-outline-dark" type="submit" [disabled]="!enableSubmit">שמור</button>
+            </div>
+        </form>
+    </div>
+</div>

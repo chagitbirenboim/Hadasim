@@ -1,0 +1,21 @@
+<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">תעודת זהות</th>
+                    <th scope="col">שם פרטי</th>
+                    <th scope="col">שם משפחה</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="users">
+                <tr *ngFor="let user of users" class="cursorPointer">
+                    <td scope="row" (click)="navigateToMember(user._id)" >{{user.identityNum}}</td>
+                    <td (click)="navigateToMember(user._id)" >{{user.firstName}}</td>
+                    <td (click)="navigateToMember(user._id)" >{{user.lastName}}</td>
+                    <!-- <td title="עריכה" class="icon center" (click)="editUser(user._id)"><i class="fa fa-pencil"></i></td> -->
+                    <td title="מחיקה" class="icon center" (click)="deleteUser(user._id)"><i class="fa fa-trash"></i></td>
+                </tr>
+            </tbody>
+        </table>

@@ -1,0 +1,224 @@
+<div *ngIf="user" dir="rtl">
+    <h1 class="text-center">פרטי חבר קופה</h1>
+    <button *ngIf="!editing" title="עריכה" class="icon center" (click)="editMember()"><i
+        class="fa fa-pencil"></i>לעריכת הפרטים לחץ כאן</button>
+    <h4>פרטים אישיים:</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <strong>מספר זהות:</strong>
+        </div>
+        <div class="col-md-4">
+             {{ user.identityNum }}
+        </div>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>שם פרטי:</strong>
+            </div> 
+            <div class="col-md-4">
+                {{ user.firstName }}
+            </div>
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('firstName')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="firstName">שם פרטי:</strong>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName">
+            <!-- <button type="button" (click)="saveChanges('firstName')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>שם משפחה:</strong> 
+            </div>
+            <div class="col-md-4">
+                {{ user.lastName }}
+            </div>
+            
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('lastName')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="lastName">שם משפחה:</strong>
+            <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName">
+            <!-- <button type="button" (click)="saveChanges('lastName')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>עיר:</strong>
+            </div>
+            <div class="col-md-4">
+                {{ user.city }}
+            </div>
+             
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('city')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="city">עיר:</strong>
+            <input type="text" id="city" name="city" [(ngModel)]="user.city">
+            <!-- <button type="button" (click)="saveChanges('city')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>רחוב:</strong> 
+            </div>
+            <div class="col-md-4">
+                {{ user.street }}
+            </div>
+           
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('street')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="street">רחוב:</strong>
+            <input type="text" id="street" name="street" [(ngModel)]="user.street">
+            <!-- <button type="button" (click)="saveChanges('street')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>מספר בית:</strong> 
+            </div>
+            <div class="col-md-4">
+                {{ user.numHouse }}
+            </div>
+            
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('numHouse')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="numHouse">מספר בית:</strong>
+            <input type="text" id="numHouse" name="numHouse" [(ngModel)]="user.numHouse">
+            <!-- <button type="button" (click)="saveChanges('numHouse')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>טלפון:</strong> 
+            </div>
+            <div class="col-md-4">
+                {{ user.phone }}
+            </div>
+            
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('phone')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="phone">טלפון:</strong>
+            <input type="text" id="phone" name="phone" [(ngModel)]="user.phone">
+            <!-- <button type="button" (click)="saveChanges('phone')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>טלפון נייד:</strong> 
+            </div>
+            <div class="col-md-4">
+                {{ user.mobilePhone }}
+            </div>
+           
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('mobilePhone')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="mobilePhone">טלפון נייד:</strong>
+            <input type="text" id="mobilePhone" name="mobilePhone" [(ngModel)]="user.mobilePhone">
+            <!-- <button type="button" (click)="saveChanges('mobilePhone')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>תאריך לידה:</strong>
+            </div>
+            <div class="col-md-4">
+                {{ user.dateBirth }}
+            </div>
+             
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('dateBirth')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="dateBirth">תאריך לידה:</strong>
+            <input type="date" id="dateBirth" name="dateBirth" [(ngModel)]="user.dateBirth">
+            <!-- <button type="button" (click)="saveChanges('dateBirth')">שמירה</button> -->
+        </form>
+    </div>
+    <h4>פרטים מחלה הקורונה:</h4>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>תאריך קבלת תוצאה חיובית לנגיף הקורונה:</strong>
+            </div>
+            <div class="col-md-4">
+                {{ illness.illnessDate }}
+            </div>
+             
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('illnessDate')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="illnessDate">תאריך קבלת תוצאה חיובית לנגיף הקורונה:</strong>
+            <input type="date" id="illnessDate" name="illnessDate" [(ngModel)]="illness.illnessDate">
+            <!-- <button type="button" (click)="saveChanges('illnessDate')">שמירה</button> -->
+        </form>
+    </div>
+    <div>
+        <div class="row" *ngIf="!editing">
+            <div class="col-md-4">
+                <strong>תאריך החלמה:</strong>
+            </div>
+            <div class="col-md-4">
+                {{ illness.recoveryDate }}
+            </div>
+             
+            <!-- <button title="עריכה" class="icon center" (click)="editMember('recoveryDate')"><i class="fa fa-pencil"></i></button> -->
+        </div>
+        <form *ngIf="editing">
+            <strong for="recoveryDate">תאריך החלמה:</strong>
+            <input type="date" id="recoveryDate" name="recoveryDate" [(ngModel)]="illness.recoveryDate">
+            <!-- <button type="button" (click)="saveChanges('recoveryDate')">שמירה</button> -->
+        </form>
+    </div>
+
+    <h4>חיסונים:</h4>
+    <ul *ngIf="vaccine">
+        <li *ngFor="let vaccine of vaccine.vaccinations">
+            {{ vaccine.date }} - {{ vaccine.manufacturer }}
+        </li>
+    </ul>
+    <form *ngIf="addNewVaccine" (ngSubmit)="addVaccine(manufacturer.value, date.value)">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="manufacturer">יצרן</label>
+                <input type="text" id="manufacturer" #manufacturer>
+            </div>
+            <div class="col-md-4">
+                <label for="date">תאריך קבלת חיסון</label>
+                <input type="date" id="date" #date>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" type="submit">הוספה</button>
+            </div>
+        </div>
+    </form>
+    <button *ngIf="!addNewVaccine && numOfVaccines<4" type="button" class="btn btn-outline-dark" (click)="addNewVaccineToTheList()">להוספת חיסון</button>
+    
+    <button *ngIf="editing" type="button" (click)="saveChanges('recoveryDate')">שמירה</button>
+
+    <!-- <button (click)="editMember()">Edit</button> -->
+
+    <!-- <div *ngIf="editing">
+        <h4>Edit Member Details:</h4>
+        <form>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" [(ngModel)]="user.firstName">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" [(ngModel)]="user.lastName">
+            <button type="button" (click)="saveChanges()">Save Changes</button>
+        </form>
+    </div> -->
+
+</div>

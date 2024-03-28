@@ -1,0 +1,2 @@
+<button (click)="openAddMemberModal()" class="btn-add-member">הוסף חבר חדש</button>
+<app-add-member-modal *ngIf="isModalOpen" (closeModalEvent)="closeModal()"></app-add-member-modal>
